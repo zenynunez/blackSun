@@ -53,7 +53,7 @@ $checkoutType = etheme_get_option('checkout_page');
 		<div class="<?php if ($checkoutType != 'quick'): ?>row-fluid<?php endif ?>">
 			<div class="<?php if ($checkoutType != 'quick'): ?>span4<?php endif ?>">
 				<?php if ( WC()->cart->needs_payment() ) : ?>
-				<h4><?php _e('Payment Method', ETHEME_DOMAIN) ?></h4>
+				<h4><?php _e('Metodos de Pagos', ETHEME_DOMAIN) ?></h4>
 				<ul class="payment_methods methods">
 					<?php
 						$available_gateways = WC()->payment_gateways->get_available_payment_gateways();
@@ -174,7 +174,7 @@ $checkoutType = etheme_get_option('checkout_page');
 					<?php do_action( 'woocommerce_review_order_before_submit' ); ?>
 		
 					<?php
-					$order_button_text = apply_filters( 'woocommerce_order_button_text', __( 'Place order', ETHEME_DOMAIN ) );
+					$order_button_text = apply_filters( 'woocommerce_order_button_text', __( 'Hacer tu Orden', ETHEME_DOMAIN ) );
 		
 					echo apply_filters( 'woocommerce_order_button_html', '<input type="submit" class="button fl-r checkout-button big active" name="woocommerce_checkout_place_order" id="place_order" value="' . esc_attr( $order_button_text ) . '" data-value="' . esc_attr( $order_button_text ) . '" />' );
 					?>

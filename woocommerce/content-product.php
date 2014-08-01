@@ -101,13 +101,13 @@ if (!empty($woocommerce_loop['style']) && $woocommerce_loop['style'] == 'advance
 					<div class="mask-text">
 						<h4><?php _e('Product description', ETHEME_DOMAIN) ?></h4>
 						<?php echo trunc(get_the_excerpt(), etheme_get_option('descr_length')) ?>
-						<p><a href="<?php the_permalink(); ?>" class="read-more-link button"><?php _e('Read More', ETHEME_DOMAIN); ?></a></p>
+						<p><a href="<?php the_permalink(); ?>" class="read-more-link button"><?php _e('Leer más', ETHEME_DOMAIN); ?></a></p>
 					</div>
 				</div>
 			<?php endif ?>
 
 			<?php if (etheme_get_option('quick_view')): ?>
-				<span class="show-quickly" data-prodid="<?php echo $post->ID;?>" style="font-size:11px; cursor: pointer;"><?php _e('Quick View', ETHEME_DOMAIN) ?></span>
+				<span class="show-quickly" data-prodid="<?php echo $post->ID;?>" style="font-size:11px; cursor: pointer;"><?php _e('Vista rapida', ETHEME_DOMAIN) ?></span>
 			<?php endif ?>
 		</div>
 

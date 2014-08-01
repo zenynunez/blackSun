@@ -1067,7 +1067,7 @@ function custom_theme_options($return = false) {
         ),
         array(
             'id'          => 'product_page_addtocart',
-            'label'       => 'Show "Add to cart" button',
+            'label'       => 'Show "Agregar al carrito" button',
             'type'        => 'checkbox',
             'section'     => 'product_grid',
             'default'     => array(
@@ -1665,7 +1665,7 @@ function custom_theme_options($return = false) {
         ),
         array(
             'id'          => 'quick_add_to_cart',
-            'label'       => 'Add to cart',
+            'label'       => 'Agregar al carrito',
             'type'        => 'checkbox',
             'section'     => 'quick_view',
             'default'     => array(0=>1),

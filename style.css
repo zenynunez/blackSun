@@ -20,6 +20,10 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
 .clearfix:after {
   clear: both;
 }
+span.active{
+  color: #fddf00;
+  font-weight: bold;
+}
 .hide-text {
   font: 0/0 a;
   color: transparent;
@@ -12453,8 +12457,9 @@ footer iframe {
 .banner .banner-content h3,
 .banner .banner-content h4,
 .banner .banner-content h5,
-.banner .banner-content h6 {
-  color: #fff;
+.banner .banner-content h6,
+.banner .banner-content p {
+  color: #000;
   margin-bottom: 3px;
   line-height: 1.1;
 }
@@ -16200,3 +16205,6 @@ img.mfp-img {
 .admin-bar .demo_store {
   display: none;
 }
+
+
+

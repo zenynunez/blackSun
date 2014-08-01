@@ -745,6 +745,7 @@ if(!function_exists('etheme_review_form')) {
 		
 		
 			comment_form( apply_filters( 'woocommerce_product_review_comment_form_args', $comment_form ) );
+			echo do_shortcode('[fbcomments]');
 			
 		
 	
@@ -922,7 +923,7 @@ if(!function_exists('etheme_top_cart')) {
 
 			<div class="shopping-cart-widget a-right" <?php if(etheme_get_option('favicon_badge')) echo 'data-fav-badge="enable"' ?>>
 				<div class="cart-summ" data-items-count="<?php echo $woocommerce->cart->cart_contents_count; ?>">
-					<a href="<?php echo $woocommerce->cart->get_cart_url(); ?>"><?php _e('Cart', ETHEME_DOMAIN) ?> <span class="items"><?php echo $woocommerce->cart->cart_contents_count; ?> <?php echo ($woocommerce->cart->cart_contents_count != 1) ? __('items', ETHEME_DOMAIN) : __('item', ETHEME_DOMAIN) ; ?></span> <span class="for-label"><?php _e('for', ETHEME_DOMAIN) ?></span> <span class="price-summ"><?php echo $woocommerce->cart->get_cart_subtotal(); ?></span></a>
+					<a href="<?php echo $woocommerce->cart->get_cart_url(); ?>"><?php _e('Cart', ETHEME_DOMAIN) ?> <span class="items"><?php echo $woocommerce->cart->cart_contents_count; ?> <?php echo ($woocommerce->cart->cart_contents_count != 1) ? __('artículos', ETHEME_DOMAIN) : __('item', ETHEME_DOMAIN) ; ?></span> <span class="for-label"><?php _e('total', ETHEME_DOMAIN) ?></span> <span class="price-summ"><?php echo $woocommerce->cart->get_cart_subtotal(); ?></span></a>
 				</div>
 			    <div class="cart-popup-container">
 				    <div class="cart-popup">

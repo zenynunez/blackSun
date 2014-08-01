@@ -80,7 +80,7 @@ class Woothemes_Testimonials {
 			'edit_item' => sprintf( __( 'Edit %s', ETHEME_DOMAIN ), __( 'Testimonial', ETHEME_DOMAIN ) ),
 			'new_item' => sprintf( __( 'New %s', ETHEME_DOMAIN ), __( 'Testimonial', ETHEME_DOMAIN ) ),
 			'all_items' => sprintf( __( 'All %s', ETHEME_DOMAIN ), __( 'Testimonials', ETHEME_DOMAIN ) ),
-			'view_item' => sprintf( __( 'View %s', ETHEME_DOMAIN ), __( 'Testimonial', ETHEME_DOMAIN ) ),
+			'view_item' => sprintf( __( 'Ver %s', ETHEME_DOMAIN ), __( 'Testimonial', ETHEME_DOMAIN ) ),
 			'search_items' => sprintf( __( 'Search %a', ETHEME_DOMAIN ), __( 'Testimonials', ETHEME_DOMAIN ) ),
 			'not_found' =>  sprintf( __( 'No %s Found', ETHEME_DOMAIN ), __( 'Testimonials', ETHEME_DOMAIN ) ),
 			'not_found_in_trash' => sprintf( __( 'No %s Found In Trash', ETHEME_DOMAIN ), __( 'Testimonials', ETHEME_DOMAIN ) ),

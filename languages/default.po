@@ -755,7 +755,7 @@ msgid "Page"
 msgstr ""
 
 #: ../framework/theme-functions.php:2648
-msgid "Return to Previous Page"
+msgid "Regresar a la página anterior"
 msgstr ""
 
 #: ../framework/theme-functions.php:2696 ../framework/widgets.php:545
@@ -5263,7 +5263,7 @@ msgid "Update totals"
 msgstr ""
 
 #: ../woocommerce/checkout/review-order.php:177
-msgid "Place order"
+msgid "Realizar tu Orden"
 msgstr ""
 
 #: ../woocommerce/checkout/review-order.php:186

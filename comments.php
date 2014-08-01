@@ -41,4 +41,5 @@
 
 	// Display Comment Form
 	comment_form();
+	echo do_shortcode('[fbcomments]');
 ?>

@@ -50,10 +50,10 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 		</div>
 		<div class="span<?php echo $meta_span; ?> product_meta">
 			<?php if (etheme_get_option('show_name_on_single')): ?>
-				<h2 class="product-name"><?php the_title(); ?></h2>
+				<!--<h2 class="product-name"><?php the_title(); ?></h2>-->
 			<?php endif ?>
 			
-			<h4><?php _e('Product Information', ETHEME_DOMAIN) ?></h4>
+			<h4><?php _e('Información del producto', ETHEME_DOMAIN) ?></h4>
 			
 			<?php woocommerce_template_loop_rating(); ?>
 

@@ -29,11 +29,11 @@ if ( $customer_orders ) : ?>
 
 		<thead>
 			<tr>
-				<th class="order-number"><span class="nobr"><?php _e( 'Order', ETHEME_DOMAIN ); ?></span></th>
-				<th class="order-date"><span class="nobr"><?php _e( 'Date', ETHEME_DOMAIN ); ?></span></th>
+				<th class="order-number"><span class="nobr"><?php _e( 'Orden', ETHEME_DOMAIN ); ?></span></th>
+				<th class="order-date"><span class="nobr"><?php _e( 'Fecha', ETHEME_DOMAIN ); ?></span></th>
 				<th class="order-status"><span class="nobr"><?php _e( 'Status', ETHEME_DOMAIN ); ?></span></th>
 				<th class="order-total"><span class="nobr"><?php _e( 'Total', ETHEME_DOMAIN ); ?></span></th>
-				<th class="order-actions">&nbsp;</th>
+				<th class="button view"></th>
 			</tr>
 		</thead>
 
@@ -81,7 +81,7 @@ if ( $customer_orders ) : ?>
 
 							$actions['view'] = array(
 								'url'  => $order->get_view_order_url(),
-								'name' => __( 'View', ETHEME_DOMAIN )
+								'name' => __( 'Ver', ETHEME_DOMAIN )
 							);
 
 							$actions = apply_filters( 'woocommerce_my_account_my_orders_actions', $actions, $order );

@@ -27,11 +27,11 @@ global $woocommerce;
 		}
 	?>
 
-	<h3 class="step-title"><?php _e( 'Shipping Address', ETHEME_DOMAIN ); ?></h3>
+	<h3 class="step-title"><?php _e( 'Dirección de envío', ETHEME_DOMAIN ); ?></h3>
 
 	<p class="form-row" id="ship-to-different-address">
 		<input id="ship-to-different-address-checkbox" class="input-checkbox" <?php checked( $ship_to_different_address, 1 ); ?> type="checkbox" name="ship_to_different_address" value="1" />
-		<label for="ship-to-different-address-checkbox" class="checkbox"><?php _e( 'Ship to a different address?', ETHEME_DOMAIN ); ?></label>
+		<label for="ship-to-different-address-checkbox" class="checkbox"><?php _e( 'Enviar a una dirección diferente?', ETHEME_DOMAIN ); ?></label>
 	</p>
 
 	<div class="shipping_address">

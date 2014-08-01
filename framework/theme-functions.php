@@ -2645,7 +2645,7 @@ if(!function_exists('etheme_breadcrumbs')) {
 
 if(!function_exists('et_back_to_page')) {
     function et_back_to_page() {
-        echo '<a class="back-to" href="javascript: history.go(-1)"><span>‹</span>'.__('Return to Previous Page',ETHEME_DOMAIN).'</a>';
+        echo '<a class="back-to" href="javascript: history.go(-1)"><span>‹</span>'.__('Regresar a la página anterior',ETHEME_DOMAIN).'</a>';
     }
 }
 
@@ -4229,3 +4229,44 @@ if(!function_exists('vc_icon_form_field')) {
         return $settings_line;
     }
 }
+
+add_filter( 'woocommerce_product_add_to_cart_text' , 'custom_woocommerce_product_add_to_cart_text' , 'single_add_to_cart_text');
+
+/**
+ * custom_woocommerce_template_loop_add_to_cart
+*/
+function custom_woocommerce_product_add_to_cart_text() {
+    global $product;
+    
+    $product_type = $product->product_type;
+    
+    switch ( $product_type ) {
+        case 'external':
+            return __( 'Compras', 'woocommerce' );
+        break;
+        case 'grouped':
+            return __( 'ver productos', 'woocommerce' );
+        break;
+        case 'simple':
+            return __( 'Agregar al Carrito', 'woocommerce' );
+        break;
+        case 'variable':
+            return __( 'seleccionar opciones', 'woocommerce' );
+        break;
+        default:
+            return __( 'Leer más', 'woocommerce' );
+    }
+    
+}
+
+
+
+add_filter( 'add_to_cart_text', 'woo_custom_cart_button_text' );                                // < 2.1
+add_filter( 'woocommerce_product_single_add_to_cart_text', 'woo_custom_cart_button_text' );    // 2.1 +
+ 
+function woo_custom_cart_button_text() {
+ 
+        return __( 'Agregar al Carrito', 'woocommerce' );
+ 
+}
+

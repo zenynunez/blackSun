@@ -91,13 +91,23 @@
       							 	}
       							});
 
-      							 var $container = $('#insta');
+      							var $container = $('#insta');
 								// initialize
 								setTimeout(function() {
 									$container.masonry({
   										itemSelector: '.instapic'
 									});
-								}, 500);
+								}, 1000);
+								
+								$('.insta').on("click", '.instapic', function(){
+									var getAttr = $(this).find('img').attr('src');
+									$('.instaModal').append("<img src='"+getAttr+"' width='550px'>").fadeIn(500);
+								});
+								$('.close-insta').click(function(){
+									$('.instaModal').fadeOut(500, function(){
+										$(this).find('img').remove();
+									});
+								});
       						}
       					});
 					})(jQuery);
@@ -105,6 +115,43 @@
 				<style type="text/css">
 					.insta-tittle span{
 						color : #f7ed34;
+					}
+					.instapic{
+						cursor : pointer; 
+					}
+					.instaModal{
+						z-index          : 99999;
+						position         : fixed;
+						top              : 0; 
+						left             : 0; 
+						display          : none; 
+						width            : 100%;
+						height           : 100%;
+						background-color : rgba(0,0,0, 0.7);
+					}
+					.instaModal img{
+						margin  : 45px auto 0 auto;
+						display : block;  
+					}
+					.close-insta{
+						-webkit-transition: all ease-out 0.5s;
+   						-moz-transition: all ease-out 0.5s;
+    					-o-transition: all ease-out 0.5s;
+    					transition: all ease-out 0.5s;
+						position  : absolute;
+						top       : 40px;
+						right     : 20px; 
+						font-size : 35px; 
+						color     : #f7ed34;
+						cursor    : pointer;
+						transform:rotate(90deg);
+						-ms-transform:rotate(90deg);/* IE 9 */
+						-webkit-transform:rotate(90deg); /* Opera, Chrome, and Safari */ 
+					}
+					.close-insta:hover{
+						 transform:rotate(0deg);
+						-ms-transform:rotate(0deg);/* IE 9 */
+						-webkit-transform:rotate(0deg);/* Opera, Chrome, and Safari */ 	
 					}
 				</style>
 				<div class="row-fluid">
@@ -114,6 +161,9 @@
 
 						</div>
 					</div>	
+				</div>
+				<div class="instaModal">
+					<div class="close-insta">X</div>
 				</div>
 			<?php } ?>
 		</div><!-- end row-fluid -->

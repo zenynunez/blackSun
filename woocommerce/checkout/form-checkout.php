@@ -39,12 +39,12 @@ $get_checkout_url = apply_filters( 'woocommerce_get_checkout_url', WC()->cart->g
 
 <ul class="checkout-steps-nav">
 	<?php if (!is_user_logged_in()): ?>
-		<li id="tostep1"><a href="#" class="button filled active" data-step="1"><?php _e('Checkout method', ETHEME_DOMAIN) ?></a></li>
-		<li id="tostep2"><a href="#" class="button" data-step="2"><?php _e('Create an account', ETHEME_DOMAIN) ?></a></li>
+		<li id="tostep1"><a href="#" class="button filled active" data-step="1"><?php _e('Metodos de Pagos', ETHEME_DOMAIN) ?></a></li>
+		<li id="tostep2"><a href="#" class="button" data-step="2"><?php _e('Crear una cuenta', ETHEME_DOMAIN) ?></a></li>
 	<?php endif ?>
-	<li id="tostep3"><a href="#" class="button <?php if (is_user_logged_in()): ?>filled active<?php endif; ?>" data-step="3"><?php _e('Billing Address', ETHEME_DOMAIN) ?></a></li>
-	<li id="tostep4"><a href="#" class="button" data-step="4"><?php _e('Shipping Address', ETHEME_DOMAIN) ?></a></li>
-	<li id="tostep5"><a href="#" class="button" data-step="5"><?php _e('Your order', ETHEME_DOMAIN) ?></a></li>
+	<li id="tostep3"><a href="#" class="button <?php if (is_user_logged_in()): ?>filled active<?php endif; ?>" data-step="3"><?php _e('Dirección de facturacción', ETHEME_DOMAIN) ?></a></li>
+	<li id="tostep4"><a href="#" class="button" data-step="4"><?php _e('Dirección de envio', ETHEME_DOMAIN) ?></a></li>
+	<li id="tostep5"><a href="#" class="button" data-step="5"><?php _e('Tu orden', ETHEME_DOMAIN) ?></a></li>
 </ul>
 
 	<?php if ( sizeof( $checkout->checkout_fields ) > 0 ) : ?>
@@ -53,39 +53,40 @@ $get_checkout_url = apply_filters( 'woocommerce_get_checkout_url', WC()->cart->g
 			<?php if (!is_user_logged_in()): ?>	
 				<div class="checkout-step active" id="step1">
 
-					<h3 class="step-title"><?php _e('Checkout Method', ETHEME_DOMAIN); ?></h3>
+					<h3 class="step-title"><?php _e('Método de Pedido', ETHEME_DOMAIN); ?></h3>
 
 					<?php do_action( 'woocommerce_checkout_before_customer_details' ); ?>
 
 					<div class="row-fluid">
 						<div class="span5 new-customers">
-							<h5><?php _e('New Customers', ETHEME_DOMAIN) ?></h5>
+							<h5><?php _e('Clients Nuevos', ETHEME_DOMAIN) ?></h5>
 							
-							<p><?php _e('Register with us for future convenience: fast and easy check out, easy access to your orders history and statuses', ETHEME_DOMAIN) ?></p>
+							<p><?php _e('Regístrese con nosotros para un fácil acceso a su historial y tus estados de órdenes', ETHEME_DOMAIN) ?></p>
 
 							<form class="checkout-methods">
 								<?php if ($checkout->enable_guest_checkout): ?>
 			                        <div class="method-radio">
 			                            <input type="radio"  id="method1" checked name="method" value="1">
-			                            <label for="method1"><?php _e('Checkout as Guest', ETHEME_DOMAIN) ?></label>
+			                            <label for="method1"><?php _e('Entrar como Invitado', ETHEME_DOMAIN) ?></label>
 			                            <div class="clear"></div>
 			                        </div>
 								<?php endif ?>
 		                        <div class="method-radio">
 		                            <input type="radio" id="method2" <?php if (!$checkout->enable_guest_checkout): ?> checked <?php endif; ?> name="method" value="2">
-		                            <label for="method2"><?php _e('Create an Account', ETHEME_DOMAIN) ?></label>
+		                            <label for="method2"><?php _e('Crear una Cuenta Nueva', ETHEME_DOMAIN) ?></label>
 		                            <div class="clear"></div>
 		                        </div>
 		                        <div class="clear"></div>
 		                    </form>
 
-		                    <button class="button active fl-r continue-checkout" data-next="2"><?php _e('Continue', ETHEME_DOMAIN) ?></button>
+		                    <button class="button active fl-r continue-checkout" data-next="2"><?php _e('Continuar', ETHEME_DOMAIN) ?></button>
 							<div class="clear"></div>
 						</div>
 
 						<div class="span5 offset2">
-							<h5><?php _e('Returning Customers', ETHEME_DOMAIN) ?></h5>
-							<p><?php _e('If you have shopped with us before, please enter your details in the boxes below. If you are a new customer please proceed to the Billing & Shipping section.', ETHEME_DOMAIN) ?></p>
+							<h5><?php _e('Clientes existentes', ETHEME_DOMAIN) ?></h5>
+							<p><?php _e('Si usted ha comprado con nosotros antes, por favor, introduzca sus datos en las siguientes casillas. Si usted es un cliente nuevo, por favor vaya a la sección de facturación y envío.
+', ETHEME_DOMAIN) ?></p>
 
 							<?php 
 							if ( !is_user_logged_in()  ||  $checkout->enable_signup ) 
@@ -111,7 +112,7 @@ $get_checkout_url = apply_filters( 'woocommerce_get_checkout_url', WC()->cart->g
 
 					<div class="checkout-step" id="step2">
 
-						<h3 class="step-title"><?php _e('Create an Account', ETHEME_DOMAIN); ?></h3>
+						<h3 class="step-title"><?php _e('Crear una Cuenta', ETHEME_DOMAIN); ?></h3>
 
 						<?php if ($checkout->enable_signup ) : ?>
 
@@ -143,7 +144,7 @@ $get_checkout_url = apply_filters( 'woocommerce_get_checkout_url', WC()->cart->g
 								</div>
 							</div>
 							
-                    		<a href="#" class="button active arrow-right fl-r continue-checkout" data-next="3"><?php _e('Continue', ETHEME_DOMAIN) ?></a>
+                    		<a href="#" class="button active arrow-right fl-r continue-checkout" data-next="3"><?php _e('Continuar', ETHEME_DOMAIN) ?></a>
 						
 							<div class="clear"></div>
 
@@ -166,7 +167,7 @@ $get_checkout_url = apply_filters( 'woocommerce_get_checkout_url', WC()->cart->g
 				</div> <!-- //step4 -->
 
 				<div class="checkout-step" id="step5">
-					<h3 class="step-title"><?php _e('Your Order', ETHEME_DOMAIN); ?></h3>
+					<h3 class="step-title"><?php _e('Tu Orden', ETHEME_DOMAIN); ?></h3>
 					<?php do_action( 'woocommerce_checkout_order_review' ); ?>
 				</div> <!-- //step5 -->
 			</form>

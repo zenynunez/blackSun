@@ -10,7 +10,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 global $woocommerce, $current_user;
-$page_title = ( $load_address == 'billing' ) ? __( 'Billing Address', ETHEME_DOMAIN ) : __( 'Shipping Address', ETHEME_DOMAIN );
+$page_title = ( $load_address == 'billing' ) ? __( 'Dirección de Envio', ETHEME_DOMAIN ) : __( 'Dirección de Envio', ETHEME_DOMAIN );
 extract(etheme_account_sidebar());
 get_currentuserinfo();
 ?>

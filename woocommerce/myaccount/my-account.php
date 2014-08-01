@@ -44,12 +44,12 @@ extract(etheme_account_sidebar());
 		<p class="myaccount_user">
 			<?php
 			printf(
-				__( 'Hello <strong>%1$s</strong> (not %1$s? <a href="%2$s">Sign out</a>).', ETHEME_DOMAIN ) . ' ',
+				__( 'Hola <strong>%1$s</strong> (not %1$s? <a href="%2$s">Sign out</a>).', ETHEME_DOMAIN ) . ' ',
 				$current_user->display_name,
 				wp_logout_url( get_permalink( wc_get_page_id( 'myaccount' ) ) )
 			);
 		
-			printf( __( 'From your account dashboard you can view your recent orders, manage your shipping and billing addresses and <a href="%s">edit your password and account details</a>.', ETHEME_DOMAIN ),
+			printf( __( ' aca podrá ver sus pedidos recientes, administrar sus direcciones de envío y facturación <a href="%s">edit your password and account details</a>.', ETHEME_DOMAIN ),
 				wc_customer_edit_account_url()
 			);
 			?>

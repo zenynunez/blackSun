@@ -33,9 +33,9 @@ if(!function_exists('et_brands')) {
 		        $thumbnail_id 	= absint( get_woocommerce_term_meta( $term->term_id, 'thumbnail_id', true ) );
 				$output .= '<li class="et-brand">';
 				if($thumbnail_id) {
-					$output .= '<a href="' . get_term_link( $term ) . '" title="' . sprintf(__('View all products from %s', ETHEME_DOMAIN), $term->name) . '"><img src="' . etheme_get_image($thumbnail_id) . '" title="' . $term->name . '"/></a>';		
+					$output .= '<a href="' . get_term_link( $term ) . '" title="' . sprintf(__('Ver todos los productos desde %s', ETHEME_DOMAIN), $term->name) . '"><img src="' . etheme_get_image($thumbnail_id) . '" title="' . $term->name . '"/></a>';		
 				} else {
-					$output .= '<h3><a href="' . get_term_link( $term ) . '" title="' . sprintf(__('View all products from %s', ETHEME_DOMAIN), $term->name) . '">' . $term->name . '</a></h3>';		
+					$output .= '<h3><a href="' . get_term_link( $term ) . '" title="' . sprintf(__('Ver todos los productos desde%s', ETHEME_DOMAIN), $term->name) . '">' . $term->name . '</a></h3>';		
 				}		
 				$output .= '</li>';
 		    }
