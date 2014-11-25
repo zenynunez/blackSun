@@ -7,6 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
     <?php endif; ?>
 	<link rel="shortcut icon" href="<?php etheme_option('favicon',true) ?>" />
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
 	<title><?php
 		/*
 		 * Print the <title> tag based on what is being viewed.

@@ -23,7 +23,7 @@ $available_variations = etheme_replace_variation_images($available_variations, 1
 					<tr>
 						<td class="label"><label for="<?php echo sanitize_title($name); ?>"><?php echo wc_attribute_label( $name ); ?></label></td>
 						<td class="value"><select id="<?php echo esc_attr( sanitize_title( $name ) ); ?>" name="attribute_<?php echo sanitize_title( $name ); ?>">
-							<option value=""><?php echo __( 'Choose an option', ETHEME_DOMAIN ) ?>&hellip;</option>
+							<option value=""><?php echo __( 'Seleccionar Talla', ETHEME_DOMAIN ) ?>&hellip;</option>
 							<?php
 								if ( is_array( $options ) ) {
 

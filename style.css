@@ -2620,7 +2620,6 @@ strong {
 .title:before {
   content: "";
   display: block;
-  border-top: 1px solid #ebebeb;
   width: 100%;
   height: 1px;
   position: absolute;
@@ -2634,7 +2633,6 @@ strong {
 .page-heading h1:before {
   content: "";
   display: block;
-  border-top: 1px solid #ebebeb;
   width: 100%;
   height: 1px;
   position: absolute;
@@ -4263,7 +4261,7 @@ input[type="submit"] i {
   text-decoration: none;
 }
 .shopping-cart-widget .cart-summ .items {
-  text-transform: none;
+  text-transform: uppercase;
   display: inline-block;
   height: 25px;
   margin: 0 3px;
@@ -4275,7 +4273,9 @@ input[type="submit"] i {
   color: #000;
 }
 .shopping-cart-widget .cart-summ .for-label {
-  text-transform: none;
+  text-transform: uppercase;
+  font-weight: bold;
+
 }
 .shopping-cart-widget .cart-popup-container {
   position: relative;
@@ -5130,7 +5130,14 @@ header .et-mega-search .button {
   font-size: 14px;
   padding: 13px 5px;
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: bold;
+}
+.menu-main-menu-1 li a:first-child{
+  font-weight: bold;
+}
+
+.main-nav .menu > li > a{
+    font-weight: bold;
 }
 .fixed-header .menu > li > a:after,
 .main-nav .menu > li > a:after {
@@ -8204,6 +8211,9 @@ display: inline-block;
 .quick-view-popup .product-info .single_add_to_cart_button,
 .single-product-page .product-info .single_add_to_cart_button {
   color: #fff;
+}
+.product-info .single_add_to_cart_button{
+  background-color: #000 !important;
 }
 .quick-view-popup .product-info .single_add_to_cart_button:hover,
 .single-product-page .product-info .single_add_to_cart_button:hover {
@@ -16199,4 +16209,9 @@ img.mfp-img {
 }
 .admin-bar .demo_store {
   display: none;
+}
+#social li{
+  float: left;
+  width: 7%;
+  list-style: none;
 }
