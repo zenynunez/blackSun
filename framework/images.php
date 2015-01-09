@@ -114,11 +114,11 @@ if ( !function_exists('vt_resize') ) {
 		// this is not an attachment, let's use the image url
 		} else if ( $img_url ) {
 			
-			$file_path = parse_url( $img_url );
-			$file_path = $_SERVER['DOCUMENT_ROOT'] . $file_path['path'];
+			//$file_path = parse_url( $img_url );
+			//$file_path = $_SERVER['DOCUMENT_ROOT'] . $file_path['path'];
 			
-			//$file_path = ltrim( $file_path['path'], '/' );
-			//$file_path = rtrim( ABSPATH, '/' ).$file_path['path'];
+			$file_path = ltrim( $file_path['path'], '/' );
+			$file_path = rtrim( ABSPATH, '/' ).$file_path['path'];
 			
 			$orig_size = getimagesize( $file_path );
 			

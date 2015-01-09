@@ -253,57 +253,54 @@
 			<?php } ?>
 
 			<?php if($_SERVER['REQUEST_URI'] === '/'){?>
-				<script type="text/javascript" src='http://cdnjs.cloudflare.com/ajax/libs/masonry/3.1.5/masonry.pkgd.min.js'></script>
-				<script type="text/javascript" src='http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js'></script>
+			<script type="text/javascript" src='http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js'></script>
 				<script type="text/javascript">
 					(function($){
 						var access_token = '220451675.1fb234f.3575f1c2ff024ad2b8256067897463ba';
     					var userId       = '220451675';
-    					var urlInstagram = 'https://api.instagram.com/v1/users/'+userId+'/media/recent/?access_token='+access_token+'&count=18&callback=JSON_CALLBACK';
-
-    							$.ajax({
+    					var urlInstagram = 'https://api.instagram.com/v1/tags/blacksunstore/media/recent?access_token='+access_token+'&count=20&callback=JSON_CALLBACK';
+    					var nextUrl      = undefined;
+   
+    					$.ajax({
     						type: "GET",
     						dataType: "jsonp",
     						cache: false,
     						url: urlInstagram,
     						success: function(instagram_data){
-    							console.log(instagram_data);
     							nextUrl = instagram_data.pagination.next_url;
     							var instagram_feed = _.map(instagram_data.data,function(data_instagram){ 
         							var data_obj = {
-        								'link'    : data_instagram.link,
-        								'image'   : data_instagram.images.standard_resolution.url,
-        								'likes'   : data_instagram.likes.count,
-        								'user'    : data_instagram.user.full_name,
-        								'imgLink' : data_instagram.link
+        								'link'     : data_instagram.link,
+        								'image'    : data_instagram.images.standard_resolution.url,
+        								'likes'    : data_instagram.likes.count,
+        								'user'     : data_instagram.user.full_name,
+        								'imgLink'  : data_instagram.link,
+        								'profileP' : data_instagram.user.profile_picture
         							};
         							return data_obj;
       							});
       							var i = 3;
       							 _.forEach(instagram_feed,function(img_feed){
-      							 	if(instagram_feed.indexOf(img_feed) === i){
-      							 		$('.insta').append("<div class='instapic'><img src='"+img_feed.image+"' width='376' data-likes='"+img_feed.likes+"' data-user='"+img_feed.user+"' data-instalink='"+img_feed.link+"'></div>");
-      							 		i = 10;
-      							 	}
-      							 	else{
-      							 		$('.insta').append("<div class='instapic'><img src='"+img_feed.image+"' width='188' data-likes='"+img_feed.likes+"' data-user='"+img_feed.user+"' data-instalink='"+img_feed.link+"'></div>");
-      							 	}
+      							 	$('.insta').append("<div class='instapic'><img src='"+img_feed.image+"' width='"+ $('.mega-cont').width() / 5 +"' data-likes='"+img_feed.likes+"' data-user='"+img_feed.user+"' data-instalink='"+img_feed.link+"'><div class='overlay'> <span class='text-wrapper'> <img src='"+img_feed.profileP+"' width='50px'/> <span class='overlay-name'>"+img_feed.user+"</span> <span> </div></div>");	
       							});
-
-      							 var $container = $('#insta');
-								// initialize
-								setTimeout(function() {
-									$container.masonry({
-  										itemSelector: '.instapic'
-									});
-								}, 500);
+      							$('.overlay').height($('.mega-cont').width() / 5).css('margin-top',-($('.mega-cont').width() / 5)).hide();
       						}
       					});
 
+						$('body').on({
+    						mouseenter: function () {
+        						$(this).find('.overlay').fadeIn();
+    						},
+    						mouseleave: function () {
+        						$(this).find('.overlay').fadeOut();
+    						}
+                        }, ".instapic");
+
 						$('body').on('click', '.instapic', function () {
+							$(this).addClass('open');
 							var srcImg    = $(this).find('img').attr('src'),
 							    userName  = $(this).find('img').attr('data-user'),
-							    userLikes = $(this).find('img').attr('data-likes');
+							    userLikes = $(this).find('img').attr('data-likes'),
 							    instalink = $(this).find('img').attr('data-instalink');
 
 							$('.insta-likes').empty().append(userLikes);
@@ -314,50 +311,97 @@
 						});
 
 						$('body').on('click', '.insta-modal', function (event) {
-							event.stopPropagation();
+							$('.instapic').removeClass('open');
 							$(this).fadeOut();
 						});
 
-						$('.loadMore').on('click',function(){
-							console.log('dddsd');
-							$.ajax({
-    						type: "GET",
-    						dataType: "jsonp",
-    						cache: false,
-    						url: nextUrl,
-    						success: function(instagram_data){
-    							console.log(instagram_data);
-    							nextUrl = instagram_data.pagination.next_url;
-    							var instagram_feed = _.map(instagram_data.data,function(data_instagram){ 
-        							var data_obj = {
-        								'link'    : data_instagram.link,
-        								'image'   : data_instagram.images.standard_resolution.url,
-        								'likes'   : data_instagram.likes.count,
-        								'user'    : data_instagram.user.full_name,
-        								'imgLink' : data_instagram.link
-        							};
-        							return data_obj;
-      							});
-      							var i = 3;
-      							 _.forEach(instagram_feed,function(img_feed){
-      							 	if(instagram_feed.indexOf(img_feed) === i){
-      							 		$('.insta').append("<div class='instapic'><img src='"+img_feed.image+"' width='376' data-likes='"+img_feed.likes+"' data-user='"+img_feed.user+"' data-instalink='"+img_feed.link+"'></div>");
-      							 		i = 10;
-      							 	}
-      							 	else{
-      							 		$('.insta').append("<div class='instapic'><img src='"+img_feed.image+"' width='188' data-likes='"+img_feed.likes+"' data-user='"+img_feed.user+"' data-instalink='"+img_feed.link+"'></div>");
-      							 	}
-      							});
+						$('body').on('click', '.insta-content', function (event) {
+							event.stopPropagation();
+						});
 
-      							 var $container = $('#insta');
-								// initialize
-								setTimeout(function() {
-									$container.masonry({
-  										itemSelector: '.instapic'
-									});
-								}, 500);
-      						}
-      					});
+						$('body').on('click', '.close-btn', function (event) {
+							event.stopPropagation();
+							$('.instapic').removeClass('open');
+							$('.insta-modal').fadeOut();
+						});
+
+						$('body').on('click','.loadMore', function(){
+							var container = document.querySelector('#insta');
+							
+							$.ajax({
+    							type: "GET",
+    							dataType: "jsonp",
+    							cache: false,
+    							url: nextUrl,
+    							success: function(instagram_data){
+    								nextUrl = instagram_data.pagination.next_url;
+    								var instagram_feed = _.map(instagram_data.data,function(data_instagram){ 
+        								var data_obj = {
+        								'link'     : data_instagram.link,
+        								'image'    : data_instagram.images.standard_resolution.url,
+        								'likes'    : data_instagram.likes.count,
+        								'user'     : data_instagram.user.full_name,
+        								'imgLink'  : data_instagram.link,
+        								'profileP' : data_instagram.user.profile_picture
+        							};
+        								return data_obj;
+      								});
+      								var i = 3;
+      							 	_.forEach(instagram_feed,function(img_feed){
+      							 		$('.insta').append("<div class='instapic'><img src='"+img_feed.image+"' width='"+ $('.mega-cont').width() / 5 +"' data-likes='"+img_feed.likes+"' data-user='"+img_feed.user+"' data-instalink='"+img_feed.link+"'><div class='overlay'> <span class='text-wrapper'> <img src='"+img_feed.profileP+"' width='50px'/> <span class='overlay-name'>"+img_feed.user+"</span> <span> </div></div>");	
+      								});
+      								$('.overlay').height($('.mega-cont').width() / 5).css('margin-top',-($('.mega-cont').width() / 5)).hide();
+      							}
+      						});
+						});
+						
+						$('body').on('click','.prev-img', function(event){
+							event.stopPropagation();
+							var prev = $('.open').prev();
+							$('.instapic').removeClass('open');
+							if(prev.attr('class') === undefined){
+								$('.instapic').removeClass('open');
+								$('.insta-modal').fadeOut();
+							}else{
+								$(prev).addClass('open');
+								var srcImg    = $(prev).find('img').attr('src'),
+							    	userName  = $(prev).find('img').attr('data-user'),
+							    	userLikes = $(prev).find('img').attr('data-likes'),
+							    	instalink = $(prev).find('img').attr('data-instalink');
+
+								$('.insta-likes').empty().append(userLikes);
+								$('.insta-user').empty().append('<a href="'+instalink+'" target="_blank">'+userName+'</a>');
+								$('.insta-modal').height(window.innerHeight).fadeIn();
+								$('.insta-content').width(window.innerWidth * 0.40);
+								$('.img-container').empty().append('<img src="'+srcImg+'">');
+							}
+						});
+
+						$('body').on('click','.next-img', function(event){
+							event.stopPropagation();
+							var next = $('.open').next();
+							$('.instapic').removeClass('open');
+							if(next.attr('class') === undefined){
+								$('.instapic').removeClass('open');
+								$('.insta-modal').fadeOut();
+							}else{
+								$(next).addClass('open');
+								var srcImg    = $(next).find('img').attr('src'),
+							    	userName  = $(next).find('img').attr('data-user'),
+							    	userLikes = $(next).find('img').attr('data-likes'),
+							    	instalink = $(next).find('img').attr('data-instalink'),
+							    	instatext = $(next).find('img').attr('data-instatext');
+
+								if(instatext === undefined){
+									instatext = 'Blacksunstore';
+								}
+
+								$('.insta-likes').empty().append(userLikes);
+								$('.insta-user').empty().append('<a href="'+instalink+'" target="_blank">'+instatext+'</a>');
+								$('.insta-modal').height(window.innerHeight).fadeIn();
+								$('.insta-content').width(window.innerWidth * 0.40);
+								$('.img-container').empty().append('<img src="'+srcImg+'">');
+							}
 						});
 
 					})(jQuery);
@@ -368,6 +412,7 @@
 					}
 					.instapic{
 						cursor : pointer; 
+						float  : left; 
 					}
 					.insta-modal{
 						background : rgba(0,0,0,0.7); 
@@ -379,17 +424,19 @@
 						z-index    : 99999;
 					}
 					.insta-modal .insta-content{
-						margin : 5% auto 0 auto; 
+						margin   : 5% auto 0 auto; 
+						position : relative; 
 					}
 					.insta-modal .insta-content .insta-footer{
-						width       : 100%;
-						height      : 40px;
+						width       : 96.5%;
+						height      : 30px;
 						background  : rgba(0,0,0,.7);  
 						color       : white;  
 						font-size   : 20px; 
 						top         : -50px;
 						position    : relative;
-						padding-top : 10px;
+						padding     : 10px; 
+						overflow    : hidden; 
 					}
 					.insta-modal .insta-content .insta-footer a{
 						color           : #fff;
@@ -399,30 +446,130 @@
 						display : block;
 						width   : 100%;  
 					}
-				
+					.insta .overlay{
+						background : rgba(0,0,0,0.7); 
+						position   : relative;  
+					}
+					.insta .overlay-name{
+						color       : white;
+						margin-left : 5px;  
+					}
+					.insta .text-wrapper{
+						top      : 70%;
+						position : relative;
+						left     : 10%;
+					}
+					.insta img:hover{
+						opacity : 1;
+					}
+					.insta img{
+						opacity : 1;
+					}
+					.loadMore{
+						cursor     : pointer; 
+						text-align : center; 
+						margin-top : 10px; 
+					}
+					.loadMore p{
+						border     : 1px solid #000;
+						cursor     : pointer; 
+						width      : 265px;
+						text-align : center; 
+						margin     : 0 auto;
+						padding    : 5px 15px;  
+						font-size  : 1.7em; 
+						color      : #000;
+					}
+					.loadMore p:hover{
+						color        : #f7ed34;
+						background   : rgba(0,0,0,0.7); 
+					}
+					.cf:before,
+					.cf:after {
+    					content : " "; /* 1 */
+    					display	: table; /* 2 */
+					}
+					.cf:after {
+    					clear : both;
+					}
+					.close-btn{
+						position      : absolute;
+						right         : -15px;
+						color         : #f7ed34;  
+						font-size     : 27px;
+						top           : -30px;
+						cursor        : pointer; 
+						border-top    : 15px solid transparent;
+						border-bottom : 15px solid transparent;
+						border-right  : 60px solid #000; 
+					}
+					.close-btn p{
+						position : relative;
+						right    : -38px; 
+						margin   : 0;
+					}
+					.insta-footer i{
+						color : red;
+					}
+					.next-img{
+						position  : absolute;
+						right     : 30px;
+						top       : 45%; 
+						color     : #f7ed34;
+						cursor    : pointer;   
+					}
+					.prev-img{
+						position  : absolute;
+						left      : 30px;
+						top       : 45%;  
+						color     : #f7ed34; 
+						cursor    : pointer; 
+					}
 				</style>
 				<div class="row-fluid">
-					<div class="span-12">
-						<h1 class="insta-tittle">#BLACKSUN<span>STORE</span></h1>
-						<div class="insta" id="insta">
+					<div class="span-12 mega-cont">
+						<h1 class="insta-tittle">#Nuestros<span>Clientes</span></h1>
+						<div class="insta cf" id="insta">
 
 						</div>
-						<p class="loadMore">Load More</p>
+						<div class="loadMore">
+							<p>VER + #BLACKSUNSTORE</p>
+						</div>
 					</div>	
 				</div>
 				<div class="insta-modal">
 					<div class="insta-content">
+						<div class="close-btn">
+							<p>x</p>
+						</div>
 						<div class="img-container"></div>
 						<div class="insta-footer">
 							<span>
-								<i class="fa fa-heart"></i>
 								<span class="insta-likes"></span>
+								<i class="fa fa-heart"></i>
 							</span>
+							<span>-</span>
 							<span class="insta-user"></span>
 						</div>
 					</div>	
+					<div class="next-img"><i class="fa fa-angle-right fa-5x"></i></div>
+					<div class="prev-img"><i class="fa fa-angle-left fa-5x"></i></div>
 				</div>
+
+    						
 			<?php } ?>
+		</div><!-- end row-fluid -->
+
+
+
+
+
+
+
+
+
+
+
 		</div><!-- end row-fluid -->
 
 	</div>
